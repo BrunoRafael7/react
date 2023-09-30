@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material'
+import { Avatar, Box, Button, Container, Grid, TextField, Typography } from '@mui/material'
 import { blue, red } from '@mui/material/colors'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import LiquorIcon from '@mui/icons-material/Liquor'
@@ -6,7 +6,7 @@ import httpService from '../services/httpService'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -29,20 +29,9 @@ const Login = () => {
         }
     }
 
-  const defaultTheme = createTheme({
-    palette: {
-        primary: {
-            main: blue[800]
-        }, 
-        secondary: {
-            main: red[300]
-        }
-    }
-  })
   return (
     <>
-        <ThemeProvider theme={defaultTheme}>
-            <Container component="main" sx={{mt: 10}}>
+    <Container component="main" sx={{mt: 10}}>
                 <Box flexDirection="column" display="flex" alignItems="center" justifyContent="center">
                     <Avatar sx={{bgcolor:"primary.main"}}>
                         <LiquorIcon />
@@ -60,14 +49,13 @@ const Login = () => {
                                 <Link> Forgot Password? </Link>
                             </Grid>
                             <Grid item xs={8}>
-                                <Link> Don't have an account? Create Account </Link>
+                                <Link to="/user/create"> Don't have an account? Create Account </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
             </Container>
             <ToastContainer/>
-        </ThemeProvider>
     </>
   )
 }
